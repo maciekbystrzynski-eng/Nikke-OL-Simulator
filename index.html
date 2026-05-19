@@ -368,7 +368,7 @@ function simSetMode(m){sim.mode=m;saveSim();rSim();}
 function rSim(){
   // Goals
   const sg=$('SG');let gh='';
-  for(let gi=0;gi<4;gi++){const goal=sim.goals[gi];const grp=goal.attrs||[];
+  for(let gi=0;gi<4;gi++){const goal=sim.goals[gi];const grp=goal?.attrs||[];
     gh+='<div class="gr"><div class="grl">Goal '+(gi+1)+'</div><div class="gc">';
     grp.forEach((id,ci)=>{if(ci>0)gh+='<span class="gor">or</span>';gh+='<span class="gch">'+E.an(id)+'<span class="gx" onclick="simRmGA('+gi+','+ci+')">×</span></span>';});
     if(!grp.length)gh+='<span style="font-size:.74rem;color:var(--t3);font-style:italic">Click +</span>';
