@@ -596,7 +596,7 @@ function simReject(){
 
 function simTogLock(i){sim.locks[i]=!sim.locks[i];if(!sim.locks[i])sim.clocks[i]=false;saveSim();rSim();}
 function simTogCL(i){if(sim.locks[i])return;sim.clocks[i]=!sim.clocks[i];saveSim();rSim();}
-function simAddGA(gi,id){if(sim.goals[gi].attrs.length>=4||sim.goals[gi].attrs.includes(id))return;sim.goals[gi].attrs.push(id);CC.clear();QC.clear();saveSim();rSim();}
+function simAddGA(gi,id){if(sim.goals[gi].attrs.length>=3||sim.goals[gi].attrs.includes(id))return;sim.goals[gi].attrs.push(id);CC.clear();QC.clear();saveSim();rSim();}
 function simRmGA(gi,ci){sim.goals[gi].attrs.splice(ci,1);CC.clear();QC.clear();saveSim();rSim();}
 function simSetGT(gi,t){sim.goals[gi].minTier=t;CC.clear();QC.clear();saveSim();rSim();}
 function simManAttr(i,v){sim.manualInput[i].attr=v;saveSim();rSim();}
