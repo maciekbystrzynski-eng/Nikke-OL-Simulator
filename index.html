@@ -323,7 +323,7 @@ function rGE(c){if(!c)return;const g=c.gear[selG];$('GN').textContent=g.name;$('
 let gh='';
 // Collect all attrs used across goals for cross-goal indicator
 const _allGoalAttrs=new Set();for(const gl of g.goals)for(const a of(gl.attrs||[]))_allGoalAttrs.add(a);
-for(let gi=0;gi<3;gi++){const goal=g.goals[gi];const grp=goal.attrs||[];const canA=grp.length<3;const isO=oDd!==null&&oDd.gi===gi;let chips='';grp.forEach((id,ci)=>{if(ci>0)chips+='<span class="gor">or</span>';chips+='<span class="gch">'+E.an(id)+'<span class="gx" onclick="event.stopPropagation();rmGA('+gi+','+ci+')">×</span></span>';});if(!grp.length)chips='<span style="font-size:.74rem;color:var(--t3);font-style:italic">Click +</span>';let dd='';if(isO){dd='<div class="gdd">';
+for(let gi=0;gi<3;gi++){const goal=g.goals[gi];const grp=goal?.attrs||[];const canA=grp.length<3;const isO=oDd!==null&&oDd.gi===gi;let chips='';grp.forEach((id,ci)=>{if(ci>0)chips+='<span class="gor">or</span>';chips+='<span class="gch">'+E.an(id)+'<span class="gx" onclick="event.stopPropagation();rmGA('+gi+','+ci+')">×</span></span>';});if(!grp.length)chips='<span style="font-size:.74rem;color:var(--t3);font-style:italic">Click +</span>';let dd='';if(isO){dd='<div class="gdd">';
   // Collect attrs used in OTHER goal groups (not this one)
   const _otherGoalAttrs=new Set();for(let ogi=0;ogi<3;ogi++){if(ogi===gi)continue;for(const a of(g.goals[ogi].attrs||[]))_otherGoalAttrs.add(a);}
   for(const a of E.ATTRS){const inG=grp.includes(a.id);const inOther=_otherGoalAttrs.has(a.id);
@@ -368,7 +368,7 @@ function simSetMode(m){sim.mode=m;saveSim();rSim();}
 function rSim(){
   // Goals
   const sg=$('SG');let gh='';
-  for(let gi=0;gi<4;gi++){const goal=sim.goals[gi];const grp=goal?.attrs||[];
+  for(let gi=0;gi<3;gi++){const goal=sim.goals[gi];const grp=goal?.attrs||[];
     gh+='<div class="gr"><div class="grl">Goal '+(gi+1)+'</div><div class="gc">';
     grp.forEach((id,ci)=>{if(ci>0)gh+='<span class="gor">or</span>';gh+='<span class="gch">'+E.an(id)+'<span class="gx" onclick="simRmGA('+gi+','+ci+')">×</span></span>';});
     if(!grp.length)gh+='<span style="font-size:.74rem;color:var(--t3);font-style:italic">Click +</span>';
